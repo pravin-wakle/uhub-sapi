@@ -121,12 +121,12 @@
 							<anypoint.platform.analytics_base_uri>https://analytics-ingest.anypoint.mulesoft.com</anypoint.platform.analytics_base_uri>
 						</properties>
 					</cloudHubDeployment>
-					<sharedLibraries>
+<!-- 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>com.oracle</groupId>
 							<artifactId>ojdbc6</artifactId>
 						</sharedLibrary>
-					</sharedLibraries>
+					</sharedLibraries> -->
 				</configuration>
 			</plugin>
 		</plugins>
