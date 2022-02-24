@@ -4,8 +4,8 @@ http:
 
 database:
   uhub:
-    host: "localhost"
-    port: "1521"
-    user: "system"
-    password: "![ycLOsC/++swJr3iotkR+Ag==]"
+    host: "oracle-69965-0.cloudclusters.net"
+    port: "10757"
+    user: "uhubdevuser"
+    password: "![vsWiIT1rsoZsAzC/vZZOzA==]"
     instance: "XE"

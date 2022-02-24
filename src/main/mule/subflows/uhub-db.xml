@@ -6,10 +6,13 @@
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
 	<sub-flow name="insert-covid-case-sub-flow" doc:id="a1701c3a-2299-4fdd-81ac-723b2e2ab7cf" >
 		<logger level="INFO" doc:name="Start log" doc:id="2e830d21-4621-46b6-ab4b-ef4b490d6af8" message='transactionId: #[vars.transactionId], correlationId: #[vars.correlationId], message: "Before insert case database call", payload: #[payload]'/>
-		<db:insert doc:name="Insert" doc:id="938ab665-f87a-4179-8558-e0534d62bbbf" config-ref="Database_Config" queryTimeout="60000" queryTimeoutUnit="MILLISECONDS">
+		<db:insert doc:name="Insert" doc:id="938ab665-f87a-4179-8558-e0534d62bbbf" config-ref="Database_Config" queryTimeout="60000" queryTimeoutUnit="MILLISECONDS" autoGenerateKeys="true">
 			<reconnect />
 			<db:sql ><![CDATA[insert into cvd_case_master(source, case_type, first_name, last_name, phone, email, date_of_birth, national_id, national_id_type, street_address, city, state, postal, country, create_date, update_date, create_by, update_by) values(:source, :case_type, :first_name, :last_name, :phone, :email, TO_DATE(:date_of_birth, 'YYYY-MM-DD'), :national_id, :national_id_type, :street_address, :city, :state, :postal, :country, TO_DATE(:create_date, 'YYYY-MM-DD'), TO_DATE(:update_date, 'YYYY-MM-DD'), :create_by, :update_by)]]></db:sql>
 			<db:input-parameters ><![CDATA[#[payload]]]></db:input-parameters>
+			<db:auto-generated-keys-column-names >
+				<db:auto-generated-keys-column-name value="CASE_ID" />
+			</db:auto-generated-keys-column-names>
 		</db:insert>
 		<logger level="DEBUG" doc:name="Logger" doc:id="a3299ac3-e186-4e60-902b-66f1b5b594af" message='transactionId: #[vars.transactionId], correlationId: #[vars.correlationId], message: "After insert case database call", payload: #[payload]'/>
 	</sub-flow>

@@ -48,7 +48,7 @@ var currentDate = now() as String { format: "yyyy-MM-dd" }
 output application/json
 ---
 {
-	caseID: 1234
+	caseID: payload[0].CASE_ID as String
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
